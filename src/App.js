@@ -1,8 +1,13 @@
-import React from 'react';
-import { Canvas } from 'react-three-fiber';
+import { Canvas } from '@react-three/fiber';
 
 function App() {
-  return <Canvas shadowMap sRGB></Canvas>;
+  return (
+    <>
+      <div>Outside Canvas</div>
+      <Canvas>
+      </Canvas>
+    </>
+  );
 }
 
 export default App;
