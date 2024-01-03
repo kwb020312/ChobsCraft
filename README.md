@@ -4,6 +4,8 @@
 
 ## 😊텍스쳐 맵핑
 
+![image](https://github.com/kwb020312/ChobsCraft/assets/46777310/61b9d080-8b21-4622-a5cf-ce4abe609b45)
+
 ```jsx
 const Ground = () => {
   // ref는 평면형을 사용할 것이며, 회전은 x축을 반시계 방향 60도 외에 모두 기본
