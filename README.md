@@ -32,7 +32,9 @@ const Ground = () => {
 };
 ```
 
-## 🤗플레이어 생성
+## 🤗플레이어 시점 생성
+
+![image](https://github.com/kwb020312/ChobsCraft/assets/46777310/c0cb603a-0fbd-4a4d-be7a-a3a65679986d)
 
 ```javascript
 const Player = () => {
