@@ -70,3 +70,27 @@ const Player = () => {
   return <mesh ref={ref}></mesh>;
 };
 ```
+
+## 👨‍🦰플레이어 이동
+
+```javascript
+// 앞뒤 방향 벡터
+const frontVector = new Vector3(
+  0,
+  0,
+  (moveBackward ? 1 : 0) - (moveForward ? 1 : 0)
+);
+
+// 좌우 방향 벡터
+const sideVector = new Vector3((moveLeft ? 1 : 0) - (moveRight ? 1 : 0), 0, 0);
+
+// 1. 전진벡터 - 좌우 벡터를 통해 최종 방향 결정 ex) 앞 우측대각
+// 2. 방향 벡터를 단위 벡터로 변경
+// 3. 해당 벡터에 속도를 곱함
+// 4. 벡터에 따른 카메라 회전을 적용
+direction
+  .subVectors(frontVector, sideVector)
+  .normalize()
+  .multiplyScalar(SPEED)
+  .applyEuler(camera.rotation);
+```
