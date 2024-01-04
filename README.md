@@ -94,3 +94,19 @@ direction
   .multiplyScalar(SPEED)
   .applyEuler(camera.rotation);
 ```
+
+## 😥카메라 이동
+
+fiber와 drei를 활용해 쉽게 활용 가능하다.
+
+```jsx
+import { PointerLockControls } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
+
+const FPV = () => {
+  const { camera, gl } = useThree();
+  return <PointerLockControls args={[camera, gl.domElement]} />;
+};
+
+export default FPV;
+```
