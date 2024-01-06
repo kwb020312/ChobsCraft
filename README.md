@@ -110,3 +110,26 @@ const FPV = () => {
 
 export default FPV;
 ```
+
+## 🗳박스 생성
+
+cannon을 활용해 간단한 박스 생성이 가능하다.
+
+```jsx
+const Cube = ({ position, texture }) => {
+  // 정지해있는 박스 mesh 생성
+  const [ref] = useBox(() => ({
+    type: "Static",
+    position,
+  }));
+  const activeTexture = textures[texture + "Texture"];
+
+  return (
+    // 박스 형태의 지오메트리와 마테리얼로 해당 메시를 구성함
+    <mesh ref={ref}>
+      <boxBufferGeometry attach="geometry" />
+      <meshStandardMaterial map={activeTexture} attach="material" />
+    </mesh>
+  );
+};
+```
