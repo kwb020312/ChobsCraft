@@ -2,7 +2,17 @@
 
 마인크래프트를 ThreeJS로 구현하며 연습해보자
 
-> OpenSSL 과 관련한 오류가 발생하는 점을 확인하였으며, [해당 게시물](https://velog.io/@kwb020312/%EC%95%8C%EA%B2%8C%EB%90%9C-%EA%B2%83-ERROSSLEVPUNSUPPORTED-%EC%98%A4%EB%A5%98-NODE-%EB%B2%84%EC%A0%84-%EB%8B%A4%EC%9A%B4%ED%95%98%EC%A7%80%EB%A7%88)을 통해 해결 방법을 조회할 수 있음
+> OpenSSL 과 관련한 오류가 발생하는 점을 확인하였으며, [해당 게시물](https://velog.io/@kwb020312/%EC%95%8C%EA%B2%8C%EB%90%9C-%EA%B2%83-ERROSSLEVPUNSUPPORTED-%EC%98%A4%EB%A5%98-NODE-%EB%B2%84%EC%A0%84-%EB%8B%A4%EC%9A%B4%ED%95%98%EC%A7%80%EB%A7%88)을 통해
+
+```
+윈도우
+set NODE_OPTIONS=--openssl-legacy-provider
+
+Mac, Linux
+export NODE_OPTIONS=--openssl-legacy-provider
+```
+
+해결 방법을 조회할 수 있음
 
 ## 😊텍스쳐 맵핑
 
@@ -111,7 +121,7 @@ const FPV = () => {
 export default FPV;
 ```
 
-## 🗳박스 생성
+## 🙄블록 생성
 
 cannon을 활용해 간단한 박스 생성이 가능하다.
 
@@ -133,3 +143,28 @@ const Cube = ({ position, texture }) => {
   );
 };
 ```
+
+## 🤐블록 제거
+
+```jsx
+<mesh
+  onClick={(e) => {
+    e.stopPropagation();
+    const clickedFace = Math.floor(e.faceIndex / 2);
+    const { x, y, z } = ref.current.position;
+    if (e.altKey) removeCube(x, y, z);
+    else if (clickedFace === 0) addCube(x + 1, y, z);
+    else if (clickedFace === 1) addCube(x - 1, y, z);
+    else if (clickedFace === 2) addCube(x, y + 1, z);
+    else if (clickedFace === 3) addCube(x, y - 1, z);
+    else if (clickedFace === 4) addCube(x, y, z + 1);
+    else if (clickedFace === 5) addCube(x, y, z - 1);
+  }}
+  ref={ref}
+>
+  <boxBufferGeometry attach="geometry" />
+  <meshStandardMaterial map={activeTexture} attach="material" />
+</mesh>
+```
+
+mesh 객체는 클릭 이벤트로 `e.point`(Vector3 생성자로 X, Y, Z 좌표를 나타냄)와 `e.faceIndex`(해당 mesh의 선택 면, 즉 좌 우 앞 뒤 위 아래)를 얻을 수 있으며, 위 코드에서 선택된 면을 2로 나눈 이유는 객체 내부부터 순차적으로 1,2 ... 외부 7,8,9,.. 의 형식으로 번호가 매겨지기 때문이다.
