@@ -123,6 +123,8 @@ export default FPV;
 
 ## 🙄블록 생성
 
+![image](https://github.com/kwb020312/ChobsCraft/assets/46777310/ae382c55-0b79-47cb-a1c3-5c6fdf81e378)
+
 cannon을 활용해 간단한 박스 생성이 가능하다.
 
 ```jsx
