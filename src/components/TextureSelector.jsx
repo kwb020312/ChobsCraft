@@ -27,7 +27,7 @@ export default function TextureSelector() {
       wood,
       log,
     };
-    const pressedTexture = Object.entries(textures).find(([k, v]) => v);
+    const pressedTexture = Object.entries(textures).find(([_, v]) => v);
     if (pressedTexture) {
       setTexture(pressedTexture[0]);
     }
