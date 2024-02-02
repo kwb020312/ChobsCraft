@@ -1,5 +1,10 @@
 # ChobsCraft
 
+- `1~5 숫자 패드`: 블록 선택
+- `스페이스바`: 점프
+- `클릭`: 블록 설치
+- `Alt`+`클릭`: 블록 제거
+
 마인크래프트를 ThreeJS로 구현하며 연습해보자
 
 > OpenSSL 과 관련한 오류가 발생하는 점을 확인하였으며, [해당 게시물](https://velog.io/@kwb020312/%EC%95%8C%EA%B2%8C%EB%90%9C-%EA%B2%83-ERROSSLEVPUNSUPPORTED-%EC%98%A4%EB%A5%98-NODE-%EB%B2%84%EC%A0%84-%EB%8B%A4%EC%9A%B4%ED%95%98%EC%A7%80%EB%A7%88)을 통해
