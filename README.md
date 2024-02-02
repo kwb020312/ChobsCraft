@@ -1,5 +1,7 @@
 # ChobsCraft
 
+[플레이하기](chobs-craft.vercel.app)
+
 - `1~5 숫자 패드`: 블록 선택
 - `스페이스바`: 점프
 - `클릭`: 블록 설치
