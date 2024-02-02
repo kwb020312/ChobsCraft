@@ -170,3 +170,30 @@ const Cube = ({ position, texture }) => {
 ```
 
 mesh 객체는 클릭 이벤트로 `e.point`(Vector3 생성자로 X, Y, Z 좌표를 나타냄)와 `e.faceIndex`(해당 mesh의 선택 면, 즉 좌 우 앞 뒤 위 아래)를 얻을 수 있으며, 위 코드에서 선택된 면을 2로 나눈 이유는 객체 내부부터 순차적으로 1,2 ... 외부 7,8,9,.. 의 형식으로 번호가 매겨지기 때문이다.
+
+## 🎄블록 포커싱
+
+![image](https://github.com/kwb020312/ChobsCraft/assets/46777310/56bf2612-621d-4c0c-ae9a-b73d7668374a)
+
+```jsx
+<mesh
+      onPointerMove={(e) => {
+        e.stopPropagation();
+        setIsHovered(true);
+      }}
+      onPointerOut={(e) => {
+        e.stopPropagation();
+        setIsHovered(false);
+      }}
+...
+```
+
+`mesh` 태그는 마우스 포인터가 해당 메시를 향해 있는지 확인하는 이벤트인 `PointerMove`와 `PointerOut`이 있으며 이에 따른
+
+```jsx
+<meshStandardMaterial
+        color={isHovered ? "gray" : "white"}
+...
+```
+
+`Material` 색상을 변경하여 어떠한 블록이 포커싱 되고있는지 구분하였음
